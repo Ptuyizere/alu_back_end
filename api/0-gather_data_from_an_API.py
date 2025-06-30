@@ -35,7 +35,6 @@ if response_todos.status_code == 200 and response_users.status_code == 200:
     completed_tasks = get_num_of_completed_tasks(todos, employee_id)
     completed_tasks_list = [task for task in todos if task["completed"] and task["userId"] == employee_id]
     total_tasks = get_num_of_tasks(todos, employee_id)
-    print(len(completed_tasks_list))
     print(f"Employee {employee_name} is done with tasks({completed_tasks}/{total_tasks}):")
     for task in completed_tasks_list:
         print(f"\t {task.get('title')}")
