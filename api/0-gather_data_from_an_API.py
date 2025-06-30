@@ -1,5 +1,10 @@
 #!/usr/bin/python3
 
+"""
+This module fetches data from the JsonPlaceholder REST API given an employee ID, and displays
+info about his/her TODO list progress.
+"""
+
 import sys
 import requests
 
