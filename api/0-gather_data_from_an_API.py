@@ -28,13 +28,17 @@ def get_num_of_tasks(tasks, id):
             num_tasks = num_tasks + 1
     return num_tasks
 
-if response_todos.status_code == 200 and response_users.status_code == 200:
-    todos = response_todos.json()
-    users = response_users.json()
-    employee_name = get_employee_name(users, employee_id)
-    completed_tasks = get_num_of_completed_tasks(todos, employee_id)
-    completed_tasks_list = [task for task in todos if task["completed"] and task["userId"] == employee_id]
-    total_tasks = get_num_of_tasks(todos, employee_id)
-    print(f"Employee {employee_name} is done with tasks({completed_tasks}/{total_tasks}):")
-    for task in completed_tasks_list:
-        print(f"\t {task.get('title')}")
+def main():
+    if response_todos.status_code == 200 and response_users.status_code == 200:
+        todos = response_todos.json()
+        users = response_users.json()
+        employee_name = get_employee_name(users, employee_id)
+        completed_tasks = get_num_of_completed_tasks(todos, employee_id)
+        completed_tasks_list = [task for task in todos if task["completed"] and task["userId"] == employee_id]
+        total_tasks = get_num_of_tasks(todos, employee_id)
+        print(f"Employee {employee_name} is done with tasks({completed_tasks}/{total_tasks}):")
+        for task in completed_tasks_list:
+            print(f"\t {task.get('title')}")
+
+if __name__ == "__main__":
+    main()
